@@ -46,42 +46,47 @@ room_exits = [
     ]
 ]
 
+def show_current_room_description():
+    global x, y
+    print("-------------------------------------------------------")
+    print(room_desc[y][x])
+    print("-------------------------------------------------------")
+
+
+def move_player(command, direction_text, direction_index, x_inc, y_inc):
+    if (command == direction_text):
+        if (room_exits[y][x][direction_index]):
+            print("You move " + direction_text)
+            x = x + x_inc
+            y = y + y_inc
+
+            show_current_room_description()
+        else:
+            print("You can't move " + direction_text + "!")
+        
+        return True
+    
+    return False
+
 x, y = 2, 2
 
 command = ""
 
-while (command != "exit"):
+show_current_room_description()
 
-    print(room_desc[y][x])
-    print("----------------")
+while (command != "exit"):
 
     print("What now?")    
     command = input()
 
-    if (command == "north"):
-        if (room_exits[y][x][0]):
-            print("You move north...")
-            y = y - 1
-        else:
-            print("You can't go north")
-    elif (command == "south"):
-        if (room_exits[y][x][2]):
-            print("You move south...")
-            y = y + 1
-        else:
-            print("You can't go south")
-    elif (command == "east"):
-        if (room_exits[y][x][1]):
-            print("You move east...")
-            x = x + 1
-        else:
-            print("You can't go east")
-    elif (command == "west"):
-        if (room_exits[y][x][3]):
-            print("You move west...")
-            x = x - 1
-        else:
-            print("You can't go west")
+    if (move_player(command, "north", 0, 0, -1)):
+        pass
+    elif (move_player(command, "east", 1, 1, 0)):
+        pass
+    elif (move_player(command, "south", 2, 0, 1)):
+        pass
+    elif (move_player(command, "west", 3, -1, 0)):
+        pass
     elif (command == "exit"):
         pass
     else:
