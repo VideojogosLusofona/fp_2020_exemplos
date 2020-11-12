@@ -1,7 +1,8 @@
+
 command = ""
 
 while (command != "exit"):
-    print("What now?")
+    print("What now?")    
     command = input()
 
     if (command == "north"):
