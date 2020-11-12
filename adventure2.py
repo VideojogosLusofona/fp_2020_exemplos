@@ -59,19 +59,29 @@ while (command != "exit"):
     command = input()
 
     if (command == "north"):
-
         if (room_exits[y][x][0]):
             print("You move north...")
             y = y - 1
         else:
             print("You can't go north")
-            
     elif (command == "south"):
-        print("You move south...")
+        if (room_exits[y][x][2]):
+            print("You move south...")
+            y = y + 1
+        else:
+            print("You can't go south")
     elif (command == "east"):
-        print("You move east...")
+        if (room_exits[y][x][1]):
+            print("You move east...")
+            x = x + 1
+        else:
+            print("You can't go east")
     elif (command == "west"):
-        print("You move west...")
+        if (room_exits[y][x][1]):
+            print("You move west...")
+            x = x - 1
+        else:
+            print("You can't go west")
     elif (command == "exit"):
         pass
     else:
