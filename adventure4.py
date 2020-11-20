@@ -79,6 +79,11 @@ while (command != "exit"):
 
     print("What now?")    
     command = input()
+    command = command.strip()
+    command = command.lower()
+
+    if (command == ""):
+        continue
 
     if (move_player(command, "north", 0, 0, -1)):
         pass
